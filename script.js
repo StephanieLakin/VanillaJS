@@ -4,7 +4,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 
-// show input error meassage
+// show input error message
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = 'form-control error';
@@ -18,9 +18,9 @@ function showSuccess(input) {
   formControl.className = 'form-control success';
 }
 // Check email is valid
-function checkEmail(email) {
+function checkEmail(input) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (re.test(input.value)) {
+  if (re.test(input.value.trim())) {
     showSuccess(input);
   } else {
     showError(input, 'Email is not valid');
@@ -51,15 +51,15 @@ function checkLength(input, min, max) {
   }
 }
 
-// checkPasswordsMatch
+// Check passwords match
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
-    showError(input2, 'Passwords do not match!');
+    showError(input2, 'Passwords do not match');
   }
 }
 // get fieldname
 
-function getFieldName(input) { 
+function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 // event listeners
